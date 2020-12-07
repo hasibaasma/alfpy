@@ -109,10 +109,10 @@ class Matrix():
             for i, line in enumerate(self.data):
                 # PHYLIP requires that each sequence identifier
                 # is maximum 10 characters long.
-                seqid = self.id_list[i][:10]
+                seqid = self.id_list[i][:20]
                 l = ['{0:.{1}f}'.format(line[i], decimal_places)
                      for i in range(0, len(line))]
-                l.insert(0, '{0: <10}'.format(seqid))
+                l.insert(0, '{0: <20}'.format(seqid))
                 handle.write(" ".join(l) + "\n")
         elif f == 'pairwise':
             for _, _, seqid1, seqid2, distval in self:
@@ -139,10 +139,10 @@ class Matrix():
     def format(self, decimal_places=7):
         lines = ["   {0}".format(len(self.id_list))]
         for i, line in enumerate(self.data):
-            seqid = self.id_list[i][:10]
+            seqid = self.id_list[i][:20]
             l = ['{0:.{1}f}'.format(line[i], decimal_places)
                  for i in range(0, len(line))]
-            l.insert(0, '{0: <10}'.format(seqid))
+            l.insert(0, '{0: <20}'.format(seqid))
             lines.append("\n" + " ".join(l))
         return "".join(lines)
 
